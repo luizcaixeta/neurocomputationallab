@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroComputationalLab</title>
+    <link rel="stylesheet" href="rulkov.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <header>
+        <img src="icon.jpg" alt="Logo">
+        <h1>NeuroComputationalLab</h1>
+    </header>
+
+    <div class="container">
+
+        <div id="textRulkov">
+    
+            <h2>Rulkov Model</h2>
+    
+            <p>
+                The Rulkov map is a two-dimensional iterated map used for modeling 
+                biological neurons. Proposed by Nikolai F. Rulkov in 2001, this map offers 
+                computational advantages when studying neural networks. Its simplicity in iteration 
+                compared to continuous dynamical systems reduces memory usage and facilitates the computation 
+                of large-scale neural networks.
+            </p>
+    
+            <h3>The Model</h3>
+    
+            <p>
+                The Rulkov map, expressed with \(n\) as discrete time, is defined by the following 
+                equations:
+    
+                \[
+                \begin{align}
+                x_{n + 1} &= \frac{\alpha}{1 + x_{n}^2} + y_{n}, \\
+                y_{n + 1} &= y_{n} - \mu (x_{n} - \sigma). 
+                \end{align}
+                \]
+    
+                Here, \(x\) represents the membrane potential of the neuron, and \(y\) is a slow variable, 
+                characterized by the small value of \(\mu\) (\(0 < \mu \ll 1\)). Although \(y\) lacks explicit 
+                biological meaning, it may be analogized to gating variables. The parameter \(\sigma\) acts as 
+                an external direct current input to the neuron, while \(\alpha\) serves as the map's nonlinearity 
+                parameter. Various combinations of \(\sigma\) and \(\alpha\) yield distinct neuronal states, such as 
+                resting, tonic spiking, and chaotic bursting, the latter occurring when \(\alpha > 4\).
+            </p>
+    
+            <h3>Analysis</h3>
+    
+            <p>
+                The dynamics of the Rulkov map can be studied by examining the behavior of its one-dimensional 
+                fast submap. Since \(y\) evolves slowly, it can be approximated as a constant in \(x\)'s evolution 
+                equation over moderate time spans. Depending on the value of \(y\), the submap may have one or three 
+                fixed points. These include a stable point, an unstable point, and a third point whose stability 
+                can vary. As \(y\) increases, the stable and unstable fixed points merge and disappear via a saddle-node 
+                bifurcation.
+            </p>
+    
+            <h3>Coupling</h3>
+    
+            <p>
+                The coupling of two neurons has been explored by Irina Bashkirtseva and Alexander Pisarchik. Their studies 
+                reveal transitions between stationary, periodic, quasiperiodic, and chaotic regimes. They also investigated 
+                how random disturbances influence the system, leading to noise-induced transitions between periodic and chaotic 
+                stochastic oscillations.
+            </p>
+    
+            <h3>Other Applications</h3>
+    
+            <p>
+                Variants of the Rulkov map have been applied in fields like labor and industrial economics, particularly in modeling 
+                corporate dynamics. These adaptations utilize synchronization and chaos regulation to explain transitions among 
+                multiple equilibria, incorporate idiosyncratic elements, and analyze the impact of effort on corporate profitability. 
+                Orlando and Bufalo introduced a deterministic model based on the Rulkov map, effectively modeling fluctuations in 
+                corporate yields and spreads during periods of distress, such as the COVID-19 pandemic. When compared to the 
+                ARIMA-EGARCH model, which handles various aspects of volatility, the deterministic Rulkov map yields comparable results. 
+                Its deterministic nature may enhance explanatory power in specific contexts.
+            </p>
+    
+            <button onclick="goToTheNextPage()" id="buttonSimulate">Simulate this Model</button>
+    
+        </div>
+    
+    </div>
+    
+
+    <footer>
+        <p>Last modified: <span id="lastModified"></span></p>
+        <p>Contact: <a href="mailto:luizfbcaixeta@gmail.com">luizfbcaixeta@gmail.com</a></p>
+    </footer>
+
+    <script src="rulkov.js"></script>
+</body>
+</html>

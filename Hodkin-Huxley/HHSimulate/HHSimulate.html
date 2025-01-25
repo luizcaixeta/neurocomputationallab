@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroComputationalLab</title>
+    <link rel="stylesheet" href="HHSimulate.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+    <script src="HHSimulate.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <img src="icon.jpg" alt="Logo">
+        <h1>NeuroComputationalLab</h1>
+    </header>
+
+    <div class="container">
+
+        <div id="equations">
+
+            <h2>Equation for Hodgkin-Huxley model</h2>
+            <p>
+                \[
+                \begin{align}
+                C_m \frac{dV}{dt} &= - \big( I_{Na} + I_{K} + I_{L} \big) + I_{ext} \\
+                I_{Na} &= \overline{g_{Na}} m^3 h (V - E_{Na}) \\
+                I_{K} &= \overline{g_{K}} n^4 (V - E_{K}) \\
+                I_{L} &= \overline{g_{L}} (V - E_{L})
+                \end{align}
+                \]
+                
+            </p>
+            <div id="simulation">
+
+                <h2>Simulate Hodgkin-Huxley model</h2>
+
+                <div>
+                    <label for="Cm">\(C_{m} (\frac{\mu F}{cm^2})\):</label>
+                    <input type="number" id="alpha" value="1.0" step="0.1">
+                </div>
+
+                <div>
+                    <label for="INa">\(I_{Na} (\frac{\mu A}{cm^2})\):</label>
+                    <input type="number" id="INa" value="1.0" step="0.001">
+                </div>
+
+                <div>
+                    <label for="IK">\(I_{K} (\frac{\mu A}{cm^2})\):</label>
+                    <input type="number" id="IK" value="1.0" step="0.1">
+                </div>
+                
+                <div>
+                    <label for="IL">\(I_{L} (\frac{\mu A}{cm^2})\):</label>
+                    <input type="number" id="IL" value="1.0" step="0.1">
+                </div>
+
+                <div>
+                    <label for="IExt">\(I_{ext} (\frac{\mu A}{cm^2})\):</label>
+                    <input type="number" id="IExt" value="10.0" step="0.1">
+                </div>
+
+                <div>
+                    <label for="GNa">\(\overline{g_{Na}} (\frac{mS}{cm^2})\):</label>
+                    <input type="number" id="GNa" value="120.0" step="1.0">
+                </div>
+
+                <div>
+                    <label for="GK">\(\overline{g_{K}} (\frac{mS}{cm^2})\):</label>
+                    <input type="number" id="GK" value="120.0" step="1.0">
+                </div>
+                
+                <div>
+                    <label for="GL">\(\overline{g_{L}} (\frac{mS}{cm^2})\):</label>
+                    <input type="number" id="GL" value="36.0" step="1.0">
+                </div>
+
+                <div>
+                    <label for="ENa">\(E_{Na} (mV)\):</label>
+                    <input type="number" id="ENa" value="50.0" step="1.0">
+                </div>
+
+                <div>
+                    <label for="EK">\(E_{K} (mV)\):</label>
+                    <input type="number" id="EK" value="-77.0" step="1.0">
+                </div>
+
+                <div>
+                    <label for="EL">\(E_{L} (mV)\):</label>
+                    <input type="number" id="EL" value="-54.4" step="1.0">
+                </div>
+
+                <div>
+                    <label for="V0">\(V_{0} (mV)\):</label>
+                    <input type="number" id="V_0" value="-65.0" step="1.0">
+                </div>
+
+                <div>
+                    <label for="i">\(i \text{(steps number)}\):</label>
+                    <input type="number" id="i" value="1000" step="1.0">
+                </div>
+
+                <button id="simulate">Simulate</button>
+
+            </div>           
+    </div>
+    
+    <div id="results">
+        <h3>Simulation Results:</h3>
+        <pre id="output"></pre>
+        <button id="downloadTable" style="display: none;">Download Full Table</button>
+    </div>
+    
+
+    <div id="chartContainer">
+        <h3>Graph of \(x\) vs. Steps:</h3>
+        <canvas id="HHChart"></canvas>
+        <canvas id="MChart"></canvas>
+        <canvas id="NChart"></canvas>
+    </div>
+
+    <button id="resetZoom">Reset zoom</button>
+    <script src="HHSimulate.js.js"></script>
+    
+</body>
+</html>

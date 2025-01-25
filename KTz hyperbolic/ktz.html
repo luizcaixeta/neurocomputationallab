@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroComputationalLab</title>
+    <link rel="stylesheet" href="ktz.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <header>
+        <img src="icon.jpg" alt="Logo">
+        <h1>NeuroComputationalLab</h1>
+    </header>
+
+    <div class="container">
+        <div id="textKtz">
+
+            <h2>KTz hyperbolic model</h2>
+
+            <p>
+                A discrete-time map with three variables. It was derived from an Ising model 
+                with competing interactions on a Bethe. Then, the hyperbolic tangent was simplified 
+                into a logistic function, \(F(u) = u/(1 + |u|)\). Both this and the hyperbolic tangent 
+                are sigmoid functions. They increase monotonically with limits \(F(u\to\pm\infty)=\pm1\),
+                and their first derivatives are continuous, where \(F^\prime(u)=1/(1+|u|)^2\). 
+                The advantages of this simplification are that all fixed points (FPs) become analytical 
+                and the computational cost to iterate the map is drastically reduced, preserving the rich 
+                repertoire of dynamical behaviors. We interpret our model as the membrane 
+                voltage of a neuron or a cardiac myocyte over time. It is defined as
+
+                \[
+                \begin{align}
+                    x(n+1) &= F\!\left(\frac{x(n) - K y(n) + z(n) + H}{T}\right) \\
+                    y(n+1) &= x(n) \\
+                    z(n+1) &= (1 - \delta)z(n) - \lambda(x(n) - x_R)
+                \end{align}
+                \]
+
+                where \(x(n)\) is the membrane potential of the cell at time \(n\) with firing gain \(T\); \(y(t)\) is a 
+                fast feedback inhibitory potential coupled with conductance-like constant \(K\) and \(z(t)\) is 
+                the potential resulting from a slow current, such as the calcium dynamics. The slow current has a 
+                recovery timescale \(1/\delta\) and a driving timescale \(1/\lambda\), with a reversal potential 
+                \(x_R\).  External inputs (synaptic or otherwise) can be introduced via the parameter \(H\). All parameters 
+                and variables are given in arbitrary units.
+
+                This map has inversion symmetry, so that changing \(x_R\to-x_R\) implies in changing 
+                \(\mathbf{x}(t)\to-\mathbf{x}(t)\), where \(\mathbf{x}(t) = [x(t), y(t), z(t)]\) is the solution of the map.Thus,
+                we can choose \(x_R< 0\) without loss of generality. We keep fixed the parameters \(H=0\), \(K=0.6\), and 
+                \(\delta=\lambda=0.001\), with initial conditions \(x(0)=y(0)=z(0)=1.0\). 
+
+
+            </p>
+
+            <button onclick="goToTheNextPage()" id="buttonSimulate">Simulate this model</button>
+        </div>
+        
+    </div>
+
+    <footer>
+        <p>Last modified: <span id="lastModified"></span></p>
+        <p>Contact: <a href="mailto:luizfbcaixeta@gmail.com">luizfbcaixeta@gmail.com</a></p>
+    </footer>
+
+    <script src="ktz.js"></script>
+    
+</body>
+</html>

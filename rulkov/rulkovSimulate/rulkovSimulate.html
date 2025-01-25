@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroComputationalLab</title>
+    <link rel="stylesheet" href="rulkovSimulate.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+    <script src="rulkovSimulate.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <img src="icon.jpg" alt="Logo">
+        <h1>NeuroComputationalLab</h1>
+    </header>
+
+    <div class="container">
+
+        <div id="equations">
+
+            <h2>Equation for Rulkov model</h2>
+            <p>
+                \[
+                \begin{align}
+                x_{n + 1} &= \frac{\alpha}{1 + x_{n}^2} + y_{n} \\
+                y_{n + 1} &= y_{n} - \mu (x_{n} - \sigma) 
+                \end{align}
+                \]
+            </p>
+            <div id="simulation">
+
+                <h2>Simulate Rulkov Model</h2>
+
+                <div>
+                    <label for="alpha">(\(\alpha\)):</label>
+                    <input type="number" id="alpha" value="2.2" step="0.1">
+                </div>
+
+                <div>
+                    <label for="mu">(\(\mu\)):</label>
+                    <input type="number" id="mu" value="0.004" step="0.001">
+                </div>
+
+                <div>
+                    <label for="sigma">(\(\sigma\)):</label>
+                    <input type="number" id="sigma" value="-1.0" step="0.1">
+                </div>
+                
+                <div>
+                    <label for="x0">Initial \(x_0\):</label>
+                    <input type="number" id="x0" value="1.0" step="0.1">
+                </div>
+
+                <div>
+                    <label for="y0">Initial \(y_0\):</label>
+                    <input type="number" id="y0" value="1.0" step="0.1">
+                </div>
+
+                <div>
+                    <label for="iterations">Iterations \(n\):</label>
+                    <input type="number" id="iterations" value="2000" step="1.0">
+                </div>
+
+                <div>
+                    <label for="iterationsTransient">Iterations \(n\):</label>
+                    <input type="number" id="iterationsTransient" value="400" step="1.0">
+                </div>
+
+                <button id="simulate">Simulate</button>
+
+            </div>           
+    </div>
+    <div id="results">
+        <h3>Simulation Results:</h3>
+        <pre id="output"></pre>
+        <button id="downloadTable" style="display: none;">Download Full Table</button>
+    </div> 
+
+    <div id="chartContainer">
+        <h3>Graph of \(x\) vs. Steps:</h3>
+        <canvas id="rulkovChart"></canvas>
+    </div>
+
+    <button id="resetZoom">Reset zoom</button>
+    <script src="rulkovSimulate.js"></script>
+    
+</body>
+</html>

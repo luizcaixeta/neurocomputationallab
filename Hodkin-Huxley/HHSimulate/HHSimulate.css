@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+header {
+    font-size: 28px;
+    font-family:'Courier New', Courier, monospace;
+    text-align: left;
+    padding: 5px 10px 5px 10px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: left;
+    line-height: 1;
+}
+header img {
+    width: 125px;
+    height: 125px;
+    margin-right: -15px;
+}
+.container {
+    display: flex;
+    flex-grow: 1; /* Permite que a área abaixo do header cresça */
+    width: 100%;
+    box-sizing: border-box;
+}
+#equations {
+    width:23%;
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: left;
+    font-size: 17px;
+    border-right: 1px solid #ccc;
+    box-sizing: border-box;    
+}
+#equations h2 {
+    font-size: 23px;
+    margin-bottom: 35px;
+}
+#simulation {
+    flex-grow: 1;
+    padding: 20px;
+    text-align: left;
+    font-size: 17px;
+}
+#simulation h2 {
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+#simulation div {
+    margin-bottom: 10px;
+}
+#simulation label {
+    display: inline-block;
+    width: 100px;
+}
+#simulation input {
+    padding: 5px;
+    width: 60px;
+}
+#chartContainer {
+    margin-left: 20px;
+}
+#HHChart {
+    max-width: 100%;
+    height: 800px;
+}
+#results {
+    margin-left: 10px;
+    font-size: 18px;
+}
+#resetZoom {
+    display: inline-block; 
+    width: 100px;          
+    height: 40px;          
+    text-align: center;    
+}

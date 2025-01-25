@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroComputationaLab</title>
+    <link rel="stylesheet" href="KTzHyperbolicSimulate.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+    <script src="KTzHyperbolicSimulate.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <img src="icon.jpg" alt="Logo">
+        <h1>NeuroComputationalLab</h1>
+    </header>
+
+    <div class="container">
+
+        <div id="equations">
+
+            <h2>Equation for KTz hyperbolic model</h2>
+            <p>
+                \[
+                \begin{align}
+                    x(n+1) &= F\!\left(\frac{x(n) - K y(n) + z(n) + H}{T}\right) \\
+                    y(n+1) &= x(n) \\
+                    z(n+1) &= (1 - \delta)z(n) - \lambda(x(n) - x_R)
+                \end{align}
+                \]
+            </p>
+            <div id="simulation">
+
+                <h2>Simulate KTz hyperbolic model</h2>
+
+                <div>
+                    <label for="K">\(K\):</label>
+                    <input type="number" id="K" value="0.6" step="0.1">
+                </div>
+
+                <div>
+                    <label for="H">\(H\):</label>
+                    <input type="number" id="H" value="0.0" step="0.001">
+                </div>
+
+                <div>
+                    <label for="delta">\(\delta\):</label>
+                    <input type="number" id="delta" value="0.001" step="0.1">
+                </div>
+
+                <div>
+                    <label for="lambda">\(\lambda\):</label>
+                    <input type="number" id="lambda" value="0.001" step="0.1">
+                </div>
+
+                <div>
+                    <label for="xR">\(x_{R}\):</label>
+                    <input type="number" id="xR" value="0.234" step="0.1">
+                </div>
+
+                <div>
+                    <label for="xR">\(T\):</label>
+                    <input type="number" id="T" value="0.234" step="0.1">
+                </div>
+                
+                <div>
+                    <label for="x0">Initial \(x_0\):</label>
+                    <input type="number" id="x0" value="1.0" step="0.1">
+                </div>
+
+                <div>
+                    <label for="y0">Initial \(y_0\):</label>
+                    <input type="number" id="y0" value="1.0" step="0.1">
+                </div>
+
+                <div>
+                    <label for="y0">Initial \(z_0\):</label>
+                    <input type="number" id="z0" value="1.0" step="0.1">
+                </div>
+
+                <div>
+                    <label for="iterations">Iterations \(n\):</label>
+                    <input type="number" id="iterations" value="2000" step="1.0">
+                </div>
+
+                <div>
+                    <label for="iterationsTransient">Iterations \(n\):</label>
+                    <input type="number" id="iterationsTransient" value="400" step="1.0">
+                </div>
+
+                <button id="simulate">Simulate</button>
+
+            </div>           
+    </div>
+    <div id="results">
+        <h3>Simulation Results:</h3>
+        <pre id="output"></pre>
+        <button id="downloadTable" style="display: none;">Download Full Table</button>
+    </div> 
+
+    <div id="chartContainer">
+        <h3>Graph of \(x\) vs. Steps:</h3>
+        <canvas id="KTzChart"></canvas>
+    </div>
+
+    <button id="resetZoom">Reset zoom</button>
+    <script src="KTzHyperbolicSimulate.js"></script>
+    
+</body>
+</html>

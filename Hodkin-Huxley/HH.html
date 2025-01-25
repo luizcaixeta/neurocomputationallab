@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroComputationalLab</title>
+    <link rel="stylesheet" href="HH.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <header>
+        <img src="icon.jpg" alt="Logo">
+        <h1>NeuroComputationalLab</h1>
+    </header>
+
+    <div class="container">
+
+        <div id="textHH">
+    
+            <h2>Hodgkin-Huxley Model</h2>
+    
+            <p>
+                The Hodgkin-Huxley model is a mathematical framework that describes the initiation and propagation 
+                of action potentials in neurons. Developed by Alan Lloyd Hodgkin and Andrew Fielding Huxley in 1952, 
+                it is based on experimental data obtained from the squid giant axon. This model earned them the Nobel 
+                Prize in Physiology or Medicine in 1963 and remains one of the most detailed and accurate descriptions 
+                of neuronal dynamics.
+            </p>
+    
+            <h3>The Model</h3>
+    
+            <p>
+                The Hodgkin-Huxley model uses a system of nonlinear differential equations to represent the dynamics of 
+                ion channels in the neuronal membrane. The membrane potential \(V\) evolves according to:
+            </p>
+            
+            <div class="equation-container">
+                <div class="equations">
+                    \[
+                    C_m \frac{dV}{dt} = - \big( I_{Na} + I_{K} + I_{L} \big) + I_{ext},
+                    \]
+                    <p>
+                        where \(C_m\) is the membrane capacitance, \(I_{Na}\), \(I_{K}\), and \(I_{L}\) represent the sodium, potassium, 
+                        and leak currents, respectively, and \(I_{ext}\) is the external current applied to the neuron.
+                    </p>
+                    \[
+                    I_{Na} = \overline{g_{Na}} m^3 h (V - E_{Na}), \quad
+                    I_{K} = \overline{g_{K}} n^4 (V - E_{K}), \quad
+                    I_{L} = \overline{g_{L}} (V - E_{L}),
+                    \]
+                    <p>
+                        where \(\overline{g_{Na}}\), \(\overline{g_{K}}\), and \(\overline{g_{L}}\) are the maximum conductances, 
+                        \(E_{Na}\), \(E_{K}\), and \(E_{L}\) are the reversal potentials, and \(m\), \(h\), and \(n\) are gating variables 
+                        that evolve according to first-order differential equations.
+                    </p>
+                </div>
+                <div class="image">
+                    <img src="HHesquema.webp" alt="Illustration" />
+                </div>
+            </div>
+            
+    
+            <h3>Analysis</h3>
+    
+            <p>
+                The Hodgkin-Huxley model captures the complex dynamics of action potentials, including their generation, propagation, 
+                and refractory periods. By analyzing the dynamics of gating variables \(m\), \(h\), and \(n\), the model provides insights 
+                into the role of ion channels in shaping the electrical behavior of neurons. These gating variables are governed by 
+                voltage-dependent rate equations, which describe the probabilities of channel opening and closing over time.
+            </p>
+    
+            <h3>Coupling</h3>
+    
+            <p>
+                In networks of neurons, the Hodgkin-Huxley model can be extended to include coupling terms, representing synaptic 
+                interactions or gap junctions. Synaptic coupling introduces additional currents into the equations, allowing neurons 
+                to communicate with each other and generate collective behaviors such as synchronization, oscillations, and wave 
+                propagation in neural tissues.
+            </p>
+    
+            <h3>Other Applications</h3>
+    
+            <p>
+                Beyond its use in neuroscience, the Hodgkin-Huxley model has been applied to diverse fields, including computational 
+                biology, bioengineering, and artificial intelligence. It serves as a foundation for understanding ion channel dynamics 
+                in cardiac cells and contributes to the development of neuromorphic computing systems. The model's ability to simulate 
+                precise electrical behavior makes it a valuable tool for designing experiments and developing treatments for neurological 
+                disorders, such as epilepsy and multiple sclerosis.
+            </p>
+    
+            <button onclick="goToTheNextPage()" id="buttonSimulate">Simulate this Model</button>
+    
+        </div>
+    
+    </div>
+    
+    
+
+    <footer>
+        <p>Last modified: <span id="lastModified"></span></p>
+        <p>Contact: <a href="mailto:luizfbcaixeta@gmail.com">luizfbcaixeta@gmail.com</a></p>
+    </footer>
+
+    <script src= "HH.js"></script>
+</body>
+</html>
